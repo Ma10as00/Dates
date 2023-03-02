@@ -1,9 +1,9 @@
 package main.java;
 
 public class Date implements IDate{
-    private int day;
+    private int day = 0;
     private Month month;
-    private int year;
+    private int year = 0;
 
     public Date(int d, Month m, int y){
         this.day = d;
@@ -28,8 +28,14 @@ public class Date implements IDate{
 
     @Override
     public boolean isValid() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isValid'");
+        if (month == null)
+            return false;
+        if (day < 1 || day > daysInMonth())
+            return false;
+        if (year < 1753 || year > 3000)
+            return false;
+        else
+            return true;
     }
 
     @Override

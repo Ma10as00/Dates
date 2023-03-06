@@ -1,34 +1,30 @@
 package main.java;
-package main;
 /**
  * This interface describes what methods we would need for a Date-class, to
  * satisfy the needs of our customer.
+ * @author Mathias Øgaard
  */
 public interface IDate {
 
     /**
-     * 
      * @return The date's day (in a month).
      */
     public int getDay();
 
     /**
-     * 
      * @return The date's month.
      */
     public Month getMonth();
 
     /**
-     * 
      * @return The date's year.
      */
     public int getYear();
 
     /**
-     * Should override java's built-in toString()-method
      * @return  A representation of the date in the following format: "DD MON YYYY", followed by " - INVALID" if appropriate.
      */
-    public String toString();
+    public String toPrintFormat();
 
     /**
      * A date is valid if it is an actual date between the years of 1753 (inclusive) and 3000 (inclusive).

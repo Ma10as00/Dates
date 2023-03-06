@@ -1,5 +1,7 @@
 package main.java;
-
+/**
+ * @author Mathias Øgaard
+ */
 public class Date implements IDate{
     private int day = 0;
     private Month month;
@@ -81,5 +83,11 @@ public class Date implements IDate{
     public Exception monthOutOfRange() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'monthOutOfRange'");
+    }
+
+    @Override
+    public String toPrintFormat() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'toPrintFormat'");
     }
 }

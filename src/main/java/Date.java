@@ -68,6 +68,12 @@ public class Date implements IDate{
     }
 
     @Override
+    public String toPrintFormat() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'toPrintFormat'");
+    }
+    
+    @Override
     public Exception yearOutOfRange() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'yearOutOfRange'");
@@ -83,11 +89,5 @@ public class Date implements IDate{
     public Exception monthOutOfRange() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'monthOutOfRange'");
-    }
-
-    @Override
-    public String toPrintFormat() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'toPrintFormat'");
     }
 }

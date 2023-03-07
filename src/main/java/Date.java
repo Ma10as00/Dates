@@ -69,8 +69,11 @@ public class Date implements IDate{
 
     @Override
     public String toPrintFormat() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'toPrintFormat'");
+        String dayStr = Integer.toString(day);
+        String monStr = Month.toString(month);
+        String yearStr = Integer.toString(year);
+
+        return dayStr + " " + monStr + " " + yearStr;
     }
     
     @Override
@@ -89,5 +92,19 @@ public class Date implements IDate{
     public Exception monthOutOfRange() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'monthOutOfRange'");
+    }
+
+    /**
+     * @param o - Object to compare with
+     * @return true if {@link o} is a date with the same day, month and year as this.
+     */
+    @Override
+    public boolean equals(Object o){
+        if(!(o instanceof Date)){
+            return false;
+        }else{
+            Date d = (Date) o;
+            return (d.day == this.day && d.month == this.month && d.year == this.year);
+        }
     }
 }

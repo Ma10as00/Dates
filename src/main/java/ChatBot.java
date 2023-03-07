@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import javax.swing.JPopupMenu.Separator;
-
 public class ChatBot implements IChatBot<Date> {
 
     private Scanner sc = new Scanner(System.in);
@@ -16,15 +14,19 @@ public class ChatBot implements IChatBot<Date> {
     }
 
     @Override
-    public ArrayList<String> readDate(String line) { //needs more work
+    public Date readDate(String line) {
+
         String sep = "";
         if(line.contains("-"))
             sep = "-";
         if(line.contains("/"))
             sep = "/";
-        if(line.contains("-"))
+        if(line.contains(" "))
             sep = " ";
         ArrayList<String> list = new ArrayList<>(Arrays.asList(line.split(sep)));
+        System.out.println(list);
+
+        //If input was valid, list should now look like this: [day, month, year]
 
         if(list.size() > 3){
             throw new IllegalArgumentException("Mulitple separators used in the same date-expression.");
@@ -33,37 +35,53 @@ public class ChatBot implements IChatBot<Date> {
             throw new IllegalArgumentException("Not enough information in the date-expression.");
         }
 
-        //Month needs to be represented by the first three letters, starting with an upper-case.
-        String month = list.get(2);
+        //Read day
+        String d = list.get(0);
+        int day;
         try {
-            Integer.parseInt(month);
+            day = Integer.valueOf(d);
         } catch (NumberFormatException e) {
-            char firstLetter = month.charAt(0);
-            Character.toUpperCase(firstLetter);
+            throw new IllegalArgumentException("Invalid day-input.");
         }
-        
-        return list;
-    }
 
-    @Override
-    public Date toDate(ArrayList<String> data) {
-        int day = Integer.valueOf(data.get(0));
-        Month month = switch (data.get(1)) {
-            case "Jan" -> Month.JANUARY;
-            case "Feb" -> Month.FEBRUARY;
-            case "Mar" -> Month.MARCH;
-            case "Apr" -> Month.APRIL;
-            case "May" -> Month.MAY;
-            case "Jun" -> Month.JUNE;
-            case "Jul" -> Month.JULY;
-            case "Aug" -> Month.AUGUST;
-            case "Sep" -> Month.SEPTEMBER;
-            case "Oct" -> Month.OCTOBER;
-            case "Nov" -> Month.NOVEMBER;
-            case "Dec" -> Month.DECEMBER;
-            default -> throw new IllegalArgumentException("Invalid month-format from readDate().");
-        };
-        int year = Integer.valueOf(data.get(2));
+        //Read month.
+        String m = list.get(1);
+        Month month;
+        try {
+            int i = Integer.parseInt(m);
+            System.out.println(i);
+            month = Month.numToMonth(i);
+        } catch (NumberFormatException e) {
+            month = switch (m) {
+                case "jan", "Jan" -> Month.JANUARY;
+                case "feb", "Feb" -> Month.FEBRUARY;
+                case "mar", "Mar" -> Month.MARCH;
+                case "apr", "Apr" -> Month.APRIL;
+                case "may", "May" -> Month.MAY;
+                case "jun", "Jun" -> Month.JUNE;
+                case "jul", "Jul" -> Month.JULY;
+                case "aug", "Aug" -> Month.AUGUST;
+                case "sep", "Sep" -> Month.SEPTEMBER;
+                case "oct", "Oct" -> Month.OCTOBER;
+                case "nov", "Nov" -> Month.NOVEMBER;
+                case "dec", "Dec" -> Month.DECEMBER;
+                default -> throw new IllegalArgumentException("Invalid moth-input.");
+            };
+        }
+
+        //Read year
+        String y = list.get(2);
+        int year;
+        try {
+            year = Integer.valueOf(y);
+            if(year < 50)
+                year += 2000;
+            if(year < 100 && year >= 50)
+                year += 1900;    
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Invalid year-input.");
+        }
+
         return new Date(day, month, year);
     }
 

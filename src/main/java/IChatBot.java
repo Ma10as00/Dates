@@ -1,7 +1,5 @@
 package main.java;
 
-import java.util.ArrayList;
-
 /**
  * This defines a class that reads input from the user, and converts it into a Date-structure.
  * Based on the input, the chatbot will print to the terminal whether the input was a valid date or not,
@@ -18,7 +16,7 @@ public interface IChatBot<D extends IDate> {
 
 
     /**
-     * Divides input into the relevant strings for day, month and year.
+     * Takes input from the user, and converts it into a Date.
      * Valid input should be in the order day-month-year, and follow the rules below.
      * Should throw exception if input is unreadable.
      * Days: dd, d or 0d    ----    
@@ -26,17 +24,9 @@ public interface IChatBot<D extends IDate> {
      * Year: yy or yyyy     ----    
      * Separator: - or / or 'space' (The same separator must be used throughout the string)
      * @param line - A string given by the user
-     * @return A list of strings: [dd, Mon, yyyy] 
+     * @return The date specified by the user input
      */
-    public ArrayList<String> readDate(String line);
-
-    /**
-     * Takes in a list processed by readDate(), and converts it into a Date.
-     * 
-     * @param input
-     * @return The date the string specifies
-     */
-    public D toDate(ArrayList<String> readInput);
+    public D readDate(String line);
 
     /**
      * Prints a date to System.out, in the format: "DD MON YYYY", followed by " - INVALID" if appropriate.

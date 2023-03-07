@@ -22,7 +22,8 @@ public enum Month {
      * @param i - An integer from 1 to 12
      * @return  The month of the given number
      */
-    public Month numToMonth(int i){
+
+    public static Month numToMonth(int i){
         return switch(i){
             case 1 -> JANUARY;
             case 2 -> FEBRUARY;
@@ -39,4 +40,23 @@ public enum Month {
             default -> throw new IllegalArgumentException("This month doesn't exist.");
         };
     }
+
+    public static String toString(Month m){
+        return switch (m) {
+            case JANUARY -> "Jan";
+            case FEBRUARY -> "Feb";
+            case MARCH -> "Mar";
+            case APRIL -> "Apr";
+            case MAY -> "May";
+            case JUNE -> "Jun";
+            case JULY -> "Jul";
+            case AUGUST -> "Aug";
+            case SEPTEMBER -> "Sep";
+            case OCTOBER -> "Oct";
+            case NOVEMBER -> "Nov";
+            case DECEMBER -> "Dec";
+            default -> throw new IllegalArgumentException("Unknown month has no name.");
+        };
+    }
+
 }

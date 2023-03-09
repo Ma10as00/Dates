@@ -1,4 +1,8 @@
 package main.java;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public enum Month {
     JANUARY,
     FEBRUARY,
@@ -22,41 +26,31 @@ public enum Month {
      * @param i - An integer from 1 to 12
      * @return  The month of the given number
      */
-
     public static Month numToMonth(int i){
-        return switch(i){
-            case 1 -> JANUARY;
-            case 2 -> FEBRUARY;
-            case 3 -> MARCH;
-            case 4 -> APRIL;
-            case 5 -> MAY;
-            case 6 -> JUNE;
-            case 7 -> JULY;
-            case 8 -> AUGUST;
-            case 9 -> SEPTEMBER;
-            case 10 -> OCTOBER;
-            case 11 -> NOVEMBER;
-            case 12 -> DECEMBER;
-            default -> throw new IllegalArgumentException("This month doesn't exist.");
-        };
+        return Month.values()[i-1];
+    }
+
+     /**
+     * Takes a string as input, and returns the corresponding month.
+     * @param str - A three-letter string, corresponding to the first letters of a month
+     * @return  The corresponding month
+     */
+    public static Month strToMonth(String str){
+        str.toLowerCase();
+        int monthNum = months().indexOf(str) + 1;
+        return numToMonth(monthNum);
+    }
+
+    private static ArrayList<String> months(){
+        String[] array = new String[] {"jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"};
+        return new ArrayList<>(Arrays.asList(array));
     }
 
     public static String toString(Month m){
-        return switch (m) {
-            case JANUARY -> "Jan";
-            case FEBRUARY -> "Feb";
-            case MARCH -> "Mar";
-            case APRIL -> "Apr";
-            case MAY -> "May";
-            case JUNE -> "Jun";
-            case JULY -> "Jul";
-            case AUGUST -> "Aug";
-            case SEPTEMBER -> "Sep";
-            case OCTOBER -> "Oct";
-            case NOVEMBER -> "Nov";
-            case DECEMBER -> "Dec";
-            default -> throw new IllegalArgumentException("Unknown month has no name.");
-        };
+        int i = m.getValueOf();
+        String str = months().get(i);
+        String capStr = str.substring(0, 1) + str.substring(1);
+        return capStr;
     }
 
 }

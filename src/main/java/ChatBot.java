@@ -52,21 +52,7 @@ public class ChatBot implements IChatBot<Date> {
             System.out.println(i);
             month = Month.numToMonth(i);
         } catch (NumberFormatException e) {
-            month = switch (m) {
-                case "jan", "Jan" -> Month.JANUARY;
-                case "feb", "Feb" -> Month.FEBRUARY;
-                case "mar", "Mar" -> Month.MARCH;
-                case "apr", "Apr" -> Month.APRIL;
-                case "may", "May" -> Month.MAY;
-                case "jun", "Jun" -> Month.JUNE;
-                case "jul", "Jul" -> Month.JULY;
-                case "aug", "Aug" -> Month.AUGUST;
-                case "sep", "Sep" -> Month.SEPTEMBER;
-                case "oct", "Oct" -> Month.OCTOBER;
-                case "nov", "Nov" -> Month.NOVEMBER;
-                case "dec", "Dec" -> Month.DECEMBER;
-                default -> throw new IllegalArgumentException("Invalid moth-input.");
-            };
+            month = Month.strToMonth(m);
         }
 
         //Read year

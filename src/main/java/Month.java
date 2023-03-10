@@ -49,7 +49,7 @@ public enum Month {
     public static String toString(Month m){
         int i = m.getValueOf();
         String str = months().get(i);
-        String capStr = str.substring(0, 1) + str.substring(1);
+        String capStr = str.substring(0, 1).toUpperCase() + str.substring(1);
         return capStr;
     }
 

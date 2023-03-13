@@ -125,7 +125,8 @@ public class ChatBot implements IChatBot<Date> {
                 try {
                     logAndPrint();
                 } catch (Exception e) {
-                    System.out.println("Sorry, I don't understand that date.");
+                    System.out.print("Sorry, I don't understand that date. This is why: ");
+                    System.out.println(e.getMessage());
                 } 
             }else if (input.equals("q")){
                 running = false;

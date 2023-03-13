@@ -30,14 +30,20 @@ public class Date implements IDate{
 
     @Override
     public boolean isValid() {
-        if (month == null)
+        if (month == null){
+            monthIsNull();
             return false;
-        if (day < 1 || day > daysInMonth())
+        }            
+        if (day < 1 || day > daysInMonth()){
+            dayOutOfRange();
             return false;
-        if (year < 1753 || year > 3000)
+        }            
+        if (year < 1753 || year > 3000){
+            yearOutOfRange();
             return false;
-        else
+        }else{
             return true;
+        }
     }
 
     @Override
@@ -70,6 +76,7 @@ public class Date implements IDate{
     @Override
     public String toPrintFormat() {
         String dayStr = Integer.toString(day);
+        if(day<10) dayStr = "0" + dayStr; 
         String monStr = Month.toString(month);
         String yearStr = Integer.toString(year);
 
@@ -77,21 +84,18 @@ public class Date implements IDate{
     }
     
     @Override
-    public Exception yearOutOfRange() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'yearOutOfRange'");
+    public void yearOutOfRange() {
+        System.err.println("Invalid year. It is not between 1753 and 3000. Date was: " + toPrintFormat());
     }
 
     @Override
-    public Exception dayOutOfRange() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'dayOutOfRange'");
+    public void dayOutOfRange() {
+        System.err.println("The day isn't within the range of the given month. This month has " + daysInMonth() + " days. Date was: " + toPrintFormat());
     }
 
     @Override
-    public Exception monthOutOfRange() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'monthOutOfRange'");
+    public void monthIsNull() {
+        System.err.println("This date hasn't been given any month. Date was: " + toPrintFormat());
     }
 
     /**

@@ -45,10 +45,17 @@ public interface IDate {
      */
     public int daysInMonth();
 
-
-
-    public Exception yearOutOfRange();
-    public Exception dayOutOfRange();
-    public Exception monthOutOfRange();   
+    /**
+     * Prints to System.err that this date's year is invalid.
+     */
+    public void yearOutOfRange();
+    /**
+     * Prints to System.err that this date's day is invalid.
+     */
+    public void dayOutOfRange();
+    /**
+     * Prints to System.err that this date's month is null.
+     */
+    public void monthIsNull();   
     
 }

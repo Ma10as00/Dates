@@ -36,8 +36,8 @@ public enum Month {
      * @return  The corresponding month
      */
     public static Month strToMonth(String str){
-        str.toLowerCase();
-        int monthNum = months().indexOf(str) + 1;
+        String low = str.toLowerCase();
+        int monthNum = months().indexOf(low) + 1;
         return numToMonth(monthNum);
     }
 
@@ -48,7 +48,7 @@ public enum Month {
 
     public static String toString(Month m){
         int i = m.getValueOf();
-        String str = months().get(i);
+        String str = months().get(i-1);
         String capStr = str.substring(0, 1).toUpperCase() + str.substring(1);
         return capStr;
     }

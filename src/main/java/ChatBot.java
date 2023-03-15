@@ -108,8 +108,8 @@ public class ChatBot implements IChatBot<Date> {
     }
 
     @Override
-    public void logAndPrint() {
-        addToLog(readDate(getNextLine()));
+    public void logAndPrint(String input) {
+        addToLog(readDate(input));
         printLog();
     }
 
@@ -117,22 +117,18 @@ public class ChatBot implements IChatBot<Date> {
     public void startConversation() {
         boolean running = true;
         while (running){   
-            System.out.println("What do you want to do?");
-            System.out.println("Press 'a' to add another date");
+            System.out.println("What date do you want to add?");
             System.out.println("Press 'q' to quit");
             String input = getNextLine();
-            if(input.equals("a")){
-                System.out.println("What date do you want to add?");
+            if(input.equals("q")){
+                running = false;
+            }else{
                 try {
-                    logAndPrint();
+                    logAndPrint(input);
                 } catch (Exception e) {
                     System.out.print("Sorry, I don't understand that date. This is why: ");
                     System.out.println(e.getMessage());
                 } 
-            }else if (input.equals("q")){
-                running = false;
-            }else{
-                System.out.println("Sorry, I don't understand. Please respond with 'a' or 'q'.");
             }
             System.out.println(); //New line to make terminal more readable.
         }

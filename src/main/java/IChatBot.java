@@ -62,7 +62,7 @@ public interface IChatBot<D extends IDate> {
     /**
      * Directly reads input from System.in, and logs the date that the input indicates, and prints the entire log.
      */
-    public void logAndPrint();
+    public void logAndPrint(String input);
 
     /**
      * Starts the program loop, where the chatbot communicates with the user.

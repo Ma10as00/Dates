@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class ChatBot implements IChatBot<Date> {
 
     private Scanner sc = new Scanner(System.in);
-    private ArrayList<Date> log = new ArrayList<>(); 
+    // private ArrayList<Date> log = new ArrayList<>(); 
 
     @Override
     public String getNextLine() {
@@ -77,40 +77,10 @@ public class ChatBot implements IChatBot<Date> {
         System.out.print(date.toPrintFormat());
         if(!date.isValid()){
             System.out.println(" - INVALID");
+            date.printErrors();
         }else{
             System.out.println();
         }
-    }
-
-    @Override
-    public void printInput() {
-        printDate(readDate(getNextLine()));
-    }
-
-    @Override
-    public ArrayList<Date> getLog() {
-        return log;
-    }
-
-    @Override
-    public boolean addToLog(Date date) {
-        date.printErrors();
-        return log.add(date);
-    }
-
-    @Override
-    public void printLog() {
-        System.out.println("-----LOG-----");
-        for (int i=0; i<log.size();i++){
-            printDate(log.get(i));
-        }
-        System.out.println("-------------");
-    }
-
-    @Override
-    public void logAndPrint(String input) {
-        addToLog(readDate(input));
-        printLog();
     }
 
     @Override
@@ -124,7 +94,7 @@ public class ChatBot implements IChatBot<Date> {
                 running = false;
             }else{
                 try {
-                    logAndPrint(input);
+                    readNprint(input);
                 } catch (Exception e) {
                     System.out.print("Sorry, I don't understand that date. This is why: ");
                     System.out.println(e.getMessage());

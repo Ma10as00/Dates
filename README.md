@@ -1,7 +1,7 @@
-# Logging dates
+# Validate dates
 
 ## Description
-This program lets you log a set of dates, by feeding the program with appropriate input.
+This program lets you validate dates, by feeding the program with appropriate input.
 The program structures your input into a Date class, allowing it to easily tell you if the date is valid or not.
 
 If you give the program any invalid dates, it will tell you. The program will log all invalid dates, and why they're considered invalid in the file error.txt.

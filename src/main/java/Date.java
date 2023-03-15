@@ -31,18 +31,27 @@ public class Date implements IDate{
     @Override
     public boolean isValid() {
         if (month == null){
-            monthIsNull();
             return false;
         }            
         if (day < 1 || day > daysInMonth()){
-            dayOutOfRange();
             return false;
         }            
         if (year < 1753 || year > 3000){
-            yearOutOfRange();
             return false;
         }else{
             return true;
+        }
+    }
+
+    @Override
+    public void printErrors() {
+        if(!isValid()){
+            if (month == null)
+                monthIsNull();
+            if (day < 1 || day > daysInMonth())
+                dayOutOfRange();
+            if (year < 1753 || year > 3000)
+                yearOutOfRange();
         }
     }
 
@@ -85,17 +94,17 @@ public class Date implements IDate{
     
     @Override
     public void yearOutOfRange() {
-        System.err.println("Invalid year. It is not between 1753 and 3000. Date was: " + toPrintFormat());
+        System.err.println(toPrintFormat() + ": Invalid year. It is not between 1753 and 3000.");
     }
 
     @Override
     public void dayOutOfRange() {
-        System.err.println("The day isn't within the range of the given month. This month has " + daysInMonth() + " days. Date was: " + toPrintFormat());
+        System.err.println(toPrintFormat() + ": The day isn't within the range of the given month. This month has " + daysInMonth() + " days.");
     }
 
     @Override
     public void monthIsNull() {
-        System.err.println("This date hasn't been given any month. Date was: " + toPrintFormat());
+        System.err.println(toPrintFormat() + ": This date hasn't been given any month.");
     }
 
     /**

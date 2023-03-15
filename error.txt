@@ -1,0 +1,4 @@
+1212 Dec 2012: The day isn't within the range of the given month. This month has 31 days.
+1212 Dec 1212: The day isn't within the range of the given month. This month has 31 days.
+1212 Dec 1212: Invalid year. It is not between 1753 and 3000.
+12 Dec 1212: Invalid year. It is not between 1753 and 3000.

@@ -57,5 +57,11 @@ public interface IDate {
      * Prints to System.err that this date's month is null.
      */
     public void monthIsNull();   
+
+    /**
+     * Prints the appropriate error message to System.err.
+     * Will only print something if the date is invalid.
+     */
+    public void printErrors();
     
 }

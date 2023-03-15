@@ -29,7 +29,7 @@ public class ChatBot implements IChatBot<Date> {
         //If input was valid, list should now look like this: [day, month, year]
 
         if(list.size() > 3){
-            throw new IllegalArgumentException("Mulitple separators used in the same date-expression.");
+            throw new IllegalArgumentException("Too many separators in the date-expression.");
         }
         if(list.size() < 3){
             throw new IllegalArgumentException("Not enough information in the date-expression.");
@@ -94,6 +94,7 @@ public class ChatBot implements IChatBot<Date> {
 
     @Override
     public boolean addToLog(Date date) {
+        date.printErrors();
         return log.add(date);
     }
 
@@ -131,7 +132,7 @@ public class ChatBot implements IChatBot<Date> {
             }else if (input.equals("q")){
                 running = false;
             }else{
-                System.out.println("Sorry, I don't understand. Try again.");
+                System.out.println("Sorry, I don't understand. Please respond with 'a' or 'q'.");
             }
             System.out.println(); //New line to make terminal more readable.
         }

@@ -3,10 +3,7 @@ package main.java;
 import java.io.PrintStream;
 
 public class Main {
-
-    
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
         PrintStream errors = new PrintStream("error.txt"); 
         errors.flush();
         System.setErr(errors); //Redirects stderr to print in error.txt instead of printing to the terminal

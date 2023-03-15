@@ -1,12 +1,27 @@
 package main.java;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class ChatBot implements IChatBot<Date> {
 
-    private Scanner sc = new Scanner(System.in);
+    private Scanner sc;
+
+    public ChatBot(){
+        sc = new Scanner(System.in);
+    }
+    
+    public ChatBot(File file){
+        try {
+            sc = new Scanner(file);    
+        } catch (Exception e) {
+            System.out.println("Didn't find file. Taking input from the terminal instead.");
+            sc = new Scanner(System.in);
+        } 
+    }
+
 
     @Override
     public String getNextLine() {

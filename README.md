@@ -1,4 +1,4 @@
-## Logging dates
+# Logging dates
 
 ## Description
 This program lets you log a set of dates, by feeding the program with appropriate input.

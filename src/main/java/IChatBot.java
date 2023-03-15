@@ -1,7 +1,5 @@
 package main.java;
 
-import java.util.ArrayList;
-
 /**
  * This defines a class that reads input from the user, and converts it into a Date-structure.
  * Based on the input, the chatbot will print to the terminal whether the input was a valid date or not,
@@ -16,7 +14,6 @@ public interface IChatBot<D extends IDate> {
      * @return
      */
     public String getNextLine();
-
 
     /**
      * Takes input from the user, and converts it into a Date.

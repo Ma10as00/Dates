@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class ChatBot implements IChatBot<Date> {
 
     private Scanner sc = new Scanner(System.in);
-    // private ArrayList<Date> log = new ArrayList<>(); 
 
     @Override
     public String getNextLine() {

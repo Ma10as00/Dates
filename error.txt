@@ -1,0 +1,23 @@
+00 Feb 2024: The day isn't within the range of the given month. This month has 29 days.
+32 Jul 1990: The day isn't within the range of the given month. This month has 31 days.
+00 Jan 1999: The day isn't within the range of the given month. This month has 31 days.
+03 Jul 4678: Invalid year. It is not between 1753 and 3000.
+08 Jul 7890: Invalid year. It is not between 1753 and 3000.
+08 Jul 1700: Invalid year. It is not between 1753 and 3000.
+31 Apr 2020: The day isn't within the range of the given month. This month has 30 days.
+01 Jan 1752: Invalid year. It is not between 1753 and 3000.
+01 Jan 3001: Invalid year. It is not between 1753 and 3000.
+99 Mar 1900: The day isn't within the range of the given month. This month has 31 days.
+02 Apr 9999: Invalid year. It is not between 1753 and 3000.
+30 Feb 1800: The day isn't within the range of the given month. This month has 28 days.
+30 Feb 2020: The day isn't within the range of the given month. This month has 29 days.
+31 Feb 2020: The day isn't within the range of the given month. This month has 29 days.
+29 Feb 1999: The day isn't within the range of the given month. This month has 28 days.
+29 Feb 1999: The day isn't within the range of the given month. This month has 28 days.
+29 Feb 1777: The day isn't within the range of the given month. This month has 28 days.
+29 Feb 1755: The day isn't within the range of the given month. This month has 28 days.
+Exception in thread "main" java.util.NoSuchElementException: No line found
+	at java.base/java.util.Scanner.nextLine(Scanner.java:1656)
+	at main.java.ChatBot.getNextLine(ChatBot.java:28)
+	at main.java.ChatBot.startConversation(ChatBot.java:106)
+	at main.java.Main.main(Main.java:13)

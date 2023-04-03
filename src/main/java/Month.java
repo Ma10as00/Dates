@@ -25,8 +25,11 @@ public enum Month {
      * Takes an int as input, and returns the corresponding month.
      * @param i - An integer from 1 to 12
      * @return  The month of the given number
+     * @throws IndexOutOfBoundsException if i is outside of range (1,12).
      */
     public static Month numToMonth(int i){
+        if(i<1 || i>12)
+            throw new IndexOutOfBoundsException("Can't recognize this month.");
         return Month.values()[i-1];
     }
 

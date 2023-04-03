@@ -75,10 +75,12 @@ public class ChatBot implements IChatBot<Date> {
         int year;
         try {
             year = Integer.valueOf(y);
-            if(year < 50)
-                year += 2000;
-            if(year < 100 && year >= 50)
-                year += 1900;    
+            if(y.length() == 2){ //If year is given with two digits
+                if(year < 50)
+                    year += 2000;
+                else
+                    year += 1900;   
+            } 
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("Invalid year-input.");
         }

@@ -8,7 +8,7 @@ If you give the program any invalid dates, it will tell you. The program will lo
 
 ## Usage
 The program should be launched by running the file Main.java.
-Check out the file error.txt during or after running the program, to see the log of invalid dates, and why they were invalid.
+Check out the file error.txt after running the program, to see the log of invalid dates, and why they were invalid.
 
 ### Valid Input
 The program can understand dates in the following formats:

@@ -101,7 +101,7 @@ public class ChatBot implements IChatBot<Date> {
     public void startConversation() {
         boolean running = true;
         while (running){   
-            System.out.println("What date do you want to add?");
+            System.out.println("What date do you want to check?");
             System.out.println("Press 'q' to quit");
             String input = getNextLine();
             if(input.equals("q")){

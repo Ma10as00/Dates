@@ -33,14 +33,19 @@ public interface IDate {
     public boolean isValid();
 
     /**
-     * The year is evenly divisible by 4. If it is also divisible by 100, it is not a leap year - unless it is also divisible by 400. Then it still is a leap year.
+     * The year is evenly divisible by 4. 
+     * <p>
+     * If it is also divisible by 100, it is not a leap year - unless it is also divisible by 400. Then it still is a leap year.
+     * 
      * @return true if this date's year is a leap year, false if it's not
      */
     public boolean isLeapYear();
 
     /**
      * Should take leap years into consideration, and return the correct number of days in this month. 
+     * <p>
      * If this date's year is a leap year, and the month is February, it should return 29. For all other years, February should have 28 days.
+     * 
      * @return The number of days in the date's month.
      */
     public int daysInMonth();

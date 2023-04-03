@@ -53,9 +53,11 @@ public class ChatBot implements IChatBot<Date> {
         String d = list.get(0);
         int day;
         try {
+            if(d.length() > 2)
+                throw new IllegalArgumentException("More than two digits in day-input.");
             day = Integer.valueOf(d);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Invalid day-input.");
+            throw new IllegalArgumentException("Non-numerical day-input.");
         }
 
         //Read month.
@@ -63,6 +65,8 @@ public class ChatBot implements IChatBot<Date> {
         Month month;
         try {
             int i = Integer.parseInt(m);
+            if(m.length() > 2) //This line is reached only if month-input is numerical
+                throw new IllegalArgumentException("More than two digits in month-input.");
             if(i<1 || i>12)
                 throw new IllegalArgumentException("Only numbers 1-12 indicates valid months.");
             month = Month.numToMonth(i);
@@ -80,9 +84,11 @@ public class ChatBot implements IChatBot<Date> {
                     year += 2000;
                 else
                     year += 1900;   
-            } 
+            }
+            if(y.length() != 2 && y.length() != 4)
+                throw new IllegalArgumentException("Year was not 2 or 4 digits.");
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Invalid year-input.");
+            throw new IllegalArgumentException("Non-numerical year-input.");
         }
 
         return new Date(day, month, year);

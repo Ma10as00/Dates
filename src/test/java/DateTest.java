@@ -2,11 +2,38 @@ package test.java;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 import main.java.*;
 
 public class DateTest {
+
+    ArrayList<Date> dates = new ArrayList<>();
+
+    public void validCases(){
+        dates.add(new Date(3, Month.AUGUST, 2024));
+        dates.add(new Date(14, Month.MAY, 1967));
+        dates.add(new Date(25, Month.AUGUST, 1974));
+        dates.add(new Date(1,Month.APRIL, 2002));
+        dates.add(new Date(29,Month.FEBRUARY, 2000));
+        dates.add(new Date(1,Month.APRIL, 1753));
+        dates.add(new Date(1,Month.APRIL, 3000));
+    }
+
+    public void invalidCases(){
+        dates.add(new Date(29, Month.FEBRUARY, 2001));
+        dates.add(new Date(1212, Month.DECEMBER,2012));
+        dates.add(new Date(0,Month.APRIL, 2002));
+        dates.add(new Date(29,Month.FEBRUARY, 2002));
+        dates.add(new Date(1,Month.APRIL, 1752));
+        dates.add(new Date(1,Month.APRIL, 3001));
+    }
+
+    public void reset(){
+        dates.clear();
+    }
 
     @Test
     public void constructionTest(){
@@ -18,25 +45,15 @@ public class DateTest {
 
     @Test
     public void validationTest(){
-        Date wrongDay1 = new Date(0,Month.APRIL, 2002);
-        Date validDay1 = new Date(1,Month.APRIL, 2002);
-        Date wrongDay2 = new Date(29,Month.FEBRUARY, 2002);
-        Date validDay2 = new Date(29,Month.FEBRUARY, 2000);
-        
-        Date wrongYear1 = new Date(1,Month.APRIL, 1752);
-        Date validYear1 = new Date(1,Month.APRIL, 1753);
-        Date wrongYear2 = new Date(1,Month.APRIL, 3001);
-        Date validYear2 = new Date(1,Month.APRIL, 3000);
-
-        assertFalse(wrongDay1.isValid());
-        assertFalse(wrongDay2.isValid());
-        assertTrue(validDay1.isValid());
-        assertTrue(validDay2.isValid());
-
-        assertFalse(wrongYear1.isValid());
-        assertFalse(wrongYear2.isValid());
-        assertTrue(validYear1.isValid());
-        assertTrue(validYear2.isValid());
+        validCases();
+        for (int i=0; i<dates.size(); i++){
+            assertTrue(dates.get(i).isValid());     
+        }
+        reset();
+        invalidCases();
+        for (int i=0; i<dates.size(); i++){
+            assertFalse(dates.get(i).isValid());    
+        }
     }
 
     @Test

@@ -125,4 +125,23 @@ public class ChatBot implements IChatBot<Date> {
             System.out.println(); //New line to make terminal more readable.
         }
     }
+
+    /**
+     * Simpler conversation that doesn't tell the user what to do. 
+     * Responds only if it's feeded input.
+     * <p>
+     * Prints date to stdout if input was understood, followed by " - INVALID" if the date is invalid.
+     * <p>
+     * If the date is invalid, an error message will also be printed to stderr.
+     */
+    public void altConversation(){
+        while (sc.hasNextLine()){
+            String input = getNextLine();
+            try {
+                readNprint(input);
+            } catch (Exception e) {
+                continue;
+            }
+        }
+    }
 }

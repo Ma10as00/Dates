@@ -65,7 +65,6 @@ public interface IDate {
 
     /**
      * Prints the appropriate error message to System.err.
-     * Will only print something if the date is invalid.
      */
     public void printErrors();
     

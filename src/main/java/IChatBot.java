@@ -35,23 +35,23 @@ public interface IChatBot<D extends IDate> {
     public D readDate(String line);
 
     /**
-     * Prints a date to System.out, in the format: {@code"DD Mon YYYY"}, followed by {@code" - INVALID"} if appropriate.
-     * <p>
-     * If the date is invalid, this should also print the appropriate error messages to System.err.
+     * Prints a date to System.out, in the format: {@code"DD Mon YYYY"}.
      * @param date
      */
-    public void printDate(D date);
+    public default void printDate(D date){
+        System.out.println(date.toPrintFormat());
+    }
 
     /**
      * Directly reads input from System.in, and prints the date that the input indicates to System.out. 
+     * <p>
+     * Prints a date to System.out, in the format: {@code"DD Mon YYYY"}, followed by {@code" - INVALID"} if appropriate.
      * <p>
      * Also, if the date is invalid, appropriate error messages are printed to System.err.
      * @param input - A line of input
      * @throws IllegalArgumentException if date is unreadable
      */
-    public default void readNprint(String input){
-        printDate(readDate(input));
-    }
+    public void readNprint(String input);
 
     /**
      * Starts the program loop, where the chatbot communicates with the user.

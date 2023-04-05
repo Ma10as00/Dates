@@ -29,7 +29,7 @@ public enum Month {
      */
     public static Month numToMonth(int i){
         if(i<1 || i>12)
-            throw new IndexOutOfBoundsException("Can't recognize this month.");
+            return null;
         return Month.values()[i-1];
     }
 
@@ -39,6 +39,8 @@ public enum Month {
      * @return  The corresponding month
      */
     public static Month strToMonth(String str){
+        if(str == "")
+            return null;
         int monthNum = months().indexOf(str) + 1;
 
         if(monthNum < 1){ // Couldn't find str in months()

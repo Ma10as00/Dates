@@ -39,6 +39,9 @@ public class ChatBot implements IChatBot<Date> {
         if(line.contains(" "))
             sep = " ";
         
+        if(sep == "")
+            throw new IllegalArgumentException("Input contained no separators.");
+
         if(sep.equals(line.substring(0, 1)) || sep.equals(line.substring(line.length()-1)))
             throw new IllegalArgumentException("Input cannot start or end with separators.");
 
@@ -70,12 +73,11 @@ public class ChatBot implements IChatBot<Date> {
             int i = Integer.parseInt(m);
             if(m.length() > 2) //This line is reached only if month-input is numerical
                 throw new IllegalArgumentException("More than two digits in month-input.");
-            if(i<1 || i>12){
-                throw new IllegalArgumentException("Only numbers 1-12 indicates valid months.");
-            }
             month = Month.numToMonth(i);
         } catch (NumberFormatException e) {
             month = Month.strToMonth(m);
+            if(month == null)
+                throw new IllegalArgumentException("Invalid month-string.");
         }
 
         //Read year
@@ -99,11 +101,14 @@ public class ChatBot implements IChatBot<Date> {
     }
 
     @Override
-    public void printDate(Date date) {
-        System.out.print(date.toPrintFormat());
-        if(!date.isValid())
-            System.out.println(" - INVALID");
-        date.printErrors();
+    public void readNprint(String input) {
+        Date date = readDate(input);
+        if(date.isValid())
+            printDate(date);
+        else{
+            System.out.println(input + " - INVALID");
+            date.printErrors();
+        }
     }
 
     @Override
@@ -140,9 +145,9 @@ public class ChatBot implements IChatBot<Date> {
             String input = getNextLine();
             try {
                 readNprint(input);
-            } catch (Exception e) {
+            } catch (IllegalArgumentException e) {
                 System.out.println(input + " - INVALID");
-            }
+            } 
         }
     }
 }

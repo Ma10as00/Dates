@@ -4,7 +4,7 @@ package main.java;
  */
 public class Date implements IDate{
     private int day = 0;
-    private Month month;
+    private Month month = null;
     private int year = 0;
 
     public Date(int d, Month m, int y){
@@ -45,14 +45,12 @@ public class Date implements IDate{
 
     @Override
     public void printErrors() {
-        if(!isValid()){
-            if (month == null)
-                monthIsNull();
-            if (day < 1 || day > daysInMonth())
-                dayOutOfRange();
-            if (year < 1753 || year > 3000)
-                yearOutOfRange();
-        }
+        if (month == null)
+            monthIsNull();
+        else if (day < 1 || day > daysInMonth())
+            dayOutOfRange();
+        if (year < 1753 || year > 3000)
+            yearOutOfRange();
     }
 
     @Override
@@ -72,7 +70,7 @@ public class Date implements IDate{
     }
 
     @Override
-    public int daysInMonth() {    
+    public int daysInMonth() {
         int days = switch (month) {
                     case JANUARY,MARCH,MAY,JULY,AUGUST,OCTOBER,DECEMBER -> 31;
                     case APRIL,JUNE,SEPTEMBER,NOVEMBER -> 30;
@@ -86,7 +84,11 @@ public class Date implements IDate{
     public String toPrintFormat() {
         String dayStr = Integer.toString(day);
         if(day<10) dayStr = "0" + dayStr; 
-        String monStr = Month.toString(month);
+        String monStr;
+        if(month == null)
+            monStr = "XX";
+        else
+            monStr = Month.toString(month);
         String yearStr = Integer.toString(year);
 
         return dayStr + " " + monStr + " " + yearStr;

@@ -2,7 +2,6 @@ package test.java;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 import org.junit.Test;
@@ -15,7 +14,6 @@ public class ChatBotTest{
     ArrayList<Date> dates = new ArrayList<>();
     ArrayList<String> output = new ArrayList<>();
     
-    private final ByteArrayOutputStream outStream = new ByteArrayOutputStream();
 
     public void validCases(){
         input.add("3-8-24");

@@ -9,6 +9,7 @@ If you give the program any invalid dates, it will tell you. The program will lo
 ## Usage
 The program should be launched by running the file Main.java.
 Check out the file error.txt after running the program, to see the log of invalid dates, and why they were invalid.
+
 If you want to give the program input from a file, instead of directly typing to the terminal, some simple changes need to be made in the Main-file. The comments in Main.java should guide you to do this the right way. (This was used heavily when testing the program against different text-files)
 
 ### Valid Input

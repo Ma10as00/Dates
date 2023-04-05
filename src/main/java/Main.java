@@ -5,11 +5,10 @@ import java.io.PrintStream;
 
 public class Main {
 
-    //Change to false if program is ran by machine, e.g. AutoJudge
-    private static final boolean USER_IS_HUMAN = true;  
-
+    //Change to false if program is ran by machine (e.g. AutoJudge) or against a file
+    private static final boolean USER_IS_HUMAN = false;
     public static void main(String[] args) throws Exception {
-        ChatBot cb = new ChatBot(); //To read from file: new ChatBot(new File("filename"));
+        ChatBot cb = new ChatBot(new File("invalid.in")); //To read from file: new ChatBot(new File("filename"));
         if(USER_IS_HUMAN){
             PrintStream errors = new PrintStream("error.txt"); 
             errors.flush();

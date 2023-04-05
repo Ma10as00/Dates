@@ -39,9 +39,28 @@ public enum Month {
      * @return  The corresponding month
      */
     public static Month strToMonth(String str){
-        String low = str.toLowerCase();
-        int monthNum = months().indexOf(low) + 1;
+        int monthNum = months().indexOf(str) + 1;
+
+        if(monthNum < 1){ // Couldn't find str in months()
+            String lowHead = str.substring(0, 1).toLowerCase() + str.substring(1);
+            monthNum = months().indexOf(lowHead) + 1;
+
+            if(monthNum < 1){   // Still couldn't find it after lowering the first letter
+                if(isAllUpperCase(str)){
+                    String lowAll = str.toLowerCase();
+                    monthNum = months().indexOf(lowAll) + 1;
+                }
+            }
+        }
         return numToMonth(monthNum);
+    }
+    private static boolean isAllUpperCase(String str){
+        for(int i=0;i<str.length();i++){
+            char c = str.charAt(i);
+            if(Character.isLowerCase(c)) 
+                return false;
+        }
+        return true;
     }
 
     private static ArrayList<String> months(){

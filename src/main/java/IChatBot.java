@@ -46,6 +46,8 @@ public interface IChatBot<D extends IDate> {
      * Directly reads input from System.in, and prints the date that the input indicates to System.out. 
      * <p>
      * Also, if the date is invalid, appropriate error messages are printed to System.err.
+     * @param input - A line of input
+     * @throws IllegalArgumentException if date is unreadable
      */
     public default void readNprint(String input){
         printDate(readDate(input));

@@ -17,8 +17,11 @@ The program can understand dates in the following formats:
 - Month can be given as one or two digits, or by the first three letters: m,0m,mm, or Mon
 - Year can be given as int: yy or yyyy (When using two digits, the program will understand it as a year in the range, 1950-2049)
 
-## Folder Structure
+## Testing
+Some simple JUnit-testing have been done to make sure the Date- and Chatbot-classes work as they should.
+In addition, the program have been tested on several text-files to see if it generates the wanted output.
 
+## Folder Structure
 The workspace contains two folders by default, where:
 
 - `src`: the folder to maintain sources
